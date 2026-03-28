@@ -1,0 +1,67 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #f6f7fb;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #1f2430;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.grid.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.card, .panel {
+  background: #fff;
+  border: 1px solid #e6e8ef;
+  border-radius: 12px;
+  padding: 14px;
+}
+.layout-2 {
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 320px 1fr;
+}
+.form-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+input, select, button {
+  border: 1px solid #d0d5e2;
+  border-radius: 8px;
+  padding: 10px;
+}
+button {
+  border: none;
+  background: #4562ff;
+  color: #fff;
+  cursor: pointer;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.list button {
+  width: 100%;
+  text-align: left;
+  background: #f3f5ff;
+  color: #223;
+}
+.list button.active {
+  background: #4562ff;
+  color: #fff;
+}
+.list.compact li {
+  padding: 8px;
+  background: #f8f9fd;
+  border-radius: 8px;
+}
