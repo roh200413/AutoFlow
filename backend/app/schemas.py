@@ -42,6 +42,70 @@ class ProjectCreate(BaseModel):
     objective: str | None = None
 
 
+class StageGateCheckRead(BaseModel):
+    id: int
+    check_result: bool
+    actual_value: str | None
+    expected_value: str | None
+    note: str | None
+    checked_at: datetime
+    rule_code: str
+    rule_name: str
+    severity: str
+    recommended_action: str | None
+
+
+class ProjectStageRead(BaseModel):
+    id: int
+    stage_name: str
+    stage_order: int
+    status: str
+    completion_rate: float
+    owner: str | None
+    is_current: bool
+    gate_checks: list[StageGateCheckRead] = Field(default_factory=list)
+
+
+class AlertRead(BaseModel):
+    id: int
+    stage_name: str | None
+    severity: str
+    title: str
+    message: str
+    recommended_action: str | None
+    status: str
+    triggered_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class AgentReviewRead(BaseModel):
+    id: int
+    agent_name: str
+    review_type: str | None
+    summary: str
+    issues: str | None
+    recommendations: str | None
+    confidence_score: float
+    reviewed_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class GovernanceSnapshot(BaseModel):
+    project_id: int
+    stages: list[ProjectStageRead]
+    alerts: list[AlertRead]
+    agent_reviews: list[AgentReviewRead]
+
+
+class ProcessMap(BaseModel):
+    name: str
+    nodes: list[dict]
+    edges: list[dict]
+    mermaid: str
+
+
 class ProjectRead(ProjectCreate):
     id: int
     created_at: datetime
